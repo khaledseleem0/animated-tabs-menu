@@ -44,7 +44,10 @@ function App() {
   const li = ['Home', 'About', 'Services', 'Blog', 'Goals']
   useEffect(() => {
     console.log(location.pathname);
+    console.log(TabRef.current.children[li.indexOf(location.pathname.slice(1))]);
     if (li.indexOf(location.pathname.slice(1)) >= 0) {
+      console.log(TabRef.current.children[li.indexOf(location.pathname.slice(1))]);
+
       TabRef.current.children[li.indexOf(location.pathname.slice(1))].click();
     }
     let indecator = TabRef.current.nextSibling;
@@ -126,10 +129,9 @@ function App() {
 
                   to={`/${e}`}
                   // 
-
+                  
                   className={({ isActive }) =>
-                    `${isActive ? themeColor.text : null}
-      py-4 w-[100%]  block text-gray-500 text-left hover:${themeColor.text} transition-all duration-500  cursor-pointer
+                    `${isActive ? themeColor.text : 'text-gray-500'} py-4 w-[100%]  block  text-left   transition-all duration-500  cursor-pointer hover:${themeColor.text}
       `}
                 >
                   {e}
