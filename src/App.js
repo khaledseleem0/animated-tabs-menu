@@ -45,17 +45,13 @@ function App() {
   useEffect(() => {
     console.log(location.pathname);
     console.log(TabRef.current.children[li.indexOf(location.pathname.slice(1))]);
-    if (li.indexOf(location.pathname.slice(1)) >= 0) {
-      console.log(TabRef.current.children[li.indexOf(location.pathname.slice(1))]);
 
-      TabRef.current.children[li.indexOf(location.pathname.slice(1))].click();
-    }
     let indecator = TabRef.current.nextSibling;
     // TabRef.current.querySelector('.indecator');
     let lists = TabRef.current.children;
     //array of ListItems
     // remove active tab from all tabs and add it on Click
-    const moveIndecator = (e, listItem) => {
+    const moveIndecator = ( listItem) => {
       TabRef.current.querySelectorAll('.active-tab').forEach(li => {
         li.classList.remove('active-tab')
       });
@@ -68,15 +64,20 @@ function App() {
       //  active ones added 
     }
     const activetor = (listItem) => {
-      listItem.addEventListener('click', (e) => {
+      listItem.addEventListener('click', () => {
         //make the code work on Click 
-        moveIndecator(e, listItem.children[0])
+        moveIndecator( listItem.children[0])
       }
       )
     }
 
     for (const listItem of lists) {
       activetor(listItem);
+    }
+    if (li.indexOf(location.pathname.slice(1)) >= 0) {
+      moveIndecator(TabRef.current.children[li.indexOf(location.pathname.slice(1))]);
+      
+      // TabRef.current.children[li.indexOf(location.pathname.slice(1))].click();
     }
   }, [location.pathname])
   return <div className={theme}>
@@ -102,7 +103,7 @@ function App() {
 
         </div>
         <label for="toggle" class={`flex items-center cursor-pointer`}>
-          <div class={`mr-3 font-medium text-gray-600 ${theme == 'light' ? themeColor.text : ''}`}>
+          <div class={`mr-3 font-medium ${theme == 'light' ? themeColor.text : 'text-gray-600 '}`}>
             OFF
           </div>
           <div class="relative">
@@ -112,7 +113,7 @@ function App() {
             <div class={`block w-14 h-8 rounded-full ${themeColor.bg}`}></div>
             <div class={`absolute top-1 left-1 w-6 h-6 bg-white rounded-full transition dot    ${theme == 'dark' ? `bg-{themeColor}-600` : null}`}></div>
           </div>
-          <div class={`ml-3 font-medium text-gray-600  ${theme == 'dark' ? themeColor.text : ''}`}>
+          <div class={`ml-3 font-medium  ${theme == 'dark' ? themeColor.text : 'text-gray-600 '}`}>
             ON
           </div>
         </label>
