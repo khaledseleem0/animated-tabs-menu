@@ -43,6 +43,7 @@ function App() {
   const TabRef = useRef();
   const li = ['Home', 'About', 'Services', 'Blog', 'Goals']
   useEffect(() => {
+    console.log(location.pathname);
     if (li.indexOf(location.pathname.slice(1)) >= 0) {
       TabRef.current.children[li.indexOf(location.pathname.slice(1))].click();
     }
