@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+}
+
+ .hide{
+
+  visibility:hidden;
+  opacity:0;
+      transition:visibility 0.2s ease-in-out,opacity 0.2s ease-in-out;
+  }
+
+  .show{
+
+    visibility:visible;
+    opacity:1;
+        transition:visibility 0.2s ease-in-out,opacity 0.2s ease-in-out;
+    }
+  
+a {
+ font-size: 18px;
+}
+
